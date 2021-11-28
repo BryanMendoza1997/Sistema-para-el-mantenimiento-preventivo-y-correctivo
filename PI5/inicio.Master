@@ -1,0 +1,273 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="inicio.Master.cs" Inherits="PI5.Inicio" %>
+<!DOCTYPE html>
+<html lang="en"">
+    <head runat="server">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <title>Sistema de Gestión Mantenimiento de Equipos</title>
+        <link href="img/favicon.png" rel="icon">
+        <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+        <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet">
+        <script src="lib/chart-master/Chart.js"></script>
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+    </head>
+    <body>
+    <form id="form1" runat="server">
+        <section id="container">
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation">
+                  
+                </div>
+            </div>
+            <!--nombre sistema-->
+            <a href="principal.aspx" class="logo"><b>SG<span>M</span></b></a>
+            <!--nombre sistema fin-->
+            <!-- notificaciones-->
+            <div class="nav notify-row" id="top_menu"> 
+                <ul class="nav top-menu">
+                    <li id="header_notification_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="principal.aspx#">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="badge bg-warning">7</span>
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            <div class="notify-arrow notify-arrow-yellow"></div>
+                            <li>
+                                <p class="yellow">You have 7 new notifications</p>
+                            </li>
+                            <li>
+                                <a href="principal.aspx#">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    Server Overloaded.
+                                    <span class="small italic">4 mins.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="principal.aspx#">
+                                    <span class="label label-warning"><i class="fa fa-bell"></i></span>
+                                    Memory #2 Not Responding.
+                                    <span class="small italic">30 mins.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="principal.aspx#">
+                                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                                    Disk Space Reached 85%.
+                                    <span class="small italic">2 hrs.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="principal.aspx#">
+                                    <span class="label label-success"><i class="fa fa-plus"></i></span>
+                                    New User Registered.
+                                    <span class="small italic">3 hrs.</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="principal.aspx#">See all notifications</a>
+                            </li>
+                        </ul>
+                    </li> 
+                </ul>
+            </div>
+             <!-- notificaciones fin-->
+            <!-- cerrar sesion-->
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <a  class="logout" href="loguin.aspx">
+                            <i class="fa fa-power-off"></i>
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- cerrar sesion fin-->
+        </header>
+        <!------------------------------------MENU LATERAL------------------------->
+        <aside>
+            <div id="sidebar" class="nav-collapse ">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <!-- usuario-->
+                    <p class="centered"><a href="usuario.aspx"><img src="img/usuario.jpg" class="img-circle" width="80"></a></p>
+                    <h5 class="centered"><%=usuario%></h5>
+                    <!-- usuario fin-->
+                    <!-- inicio-->
+                    <li class="mt">
+                        <a class="active" href="principal.aspx">
+                            <i class="fa fa-home"></i>
+                            <span>Inicio</span>
+                        </a>
+                    </li>
+                    <!-- inicio fin-->
+                    <!-----------------submenu----------------->
+                    <!-- Proveedores-->
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-group"></i>
+                            <span>Proveedores</span>
+                        </a>
+                        <ul class="sub">
+                        <li>
+                        <a href="Proveedores.aspx">
+                            <i class="fa fa-eye"></i>
+                            <span>Ver</span>
+                        </a>
+                            </li>
+                            </ul>
+                        <ul class="sub">
+                        <li>
+                                <a href="Reportes.aspx">
+                                    <i class="fa fa-file"></i>
+                                    <span>Reportes</span>
+                                </a>
+                            </li>
+                            </ul>
+                    </li>
+                            
+                    <!-- Tecnicos-->
+                    <li class="sub-menu">
+                        <a href="tecnico.aspx">
+                            <i class="fa fa-users"></i>
+                            <span>Técnicos</span>
+                        </a>
+                    </li>
+                    <!-- Ubicaciones-->
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-university"></i>
+                            <span>Ubicaciones</span>
+                        </a>
+                    </li>
+                    <!-- Maquinarias/Equipos-->
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-laptop"></i>
+                            <span>Maquinarias y/o Equipos</span>
+                        </a>
+                        <ul class="sub">
+                            <li>
+                                <a href="Maquiequipos.aspx">
+                                    <i class="fa fa-eye"></i>
+                                    <span>Ver</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-book"></i>
+                                    <span>Manual</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="PlanMantenimientp.aspx">
+                                    <i class="fa fa-file"></i>
+                                    <span>Plan de Mantenimiento</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Mantenimientos-->
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-tasks"></i>
+                            <span>Mantenimientos</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!--------------------------------FIN MENU LATERAL------------------------->
+        <!--------------------------------CONTENIDO------------------------->
+       <section id="main-content">
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+              <div>
+                   <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+               </div>
+        </section>
+         <!-------------------------------- FIN CONTENIDO------------------------->
+        <footer class="site-footer"> /<!--navbar-fixed-bottom-->
+      <div class="text-center">
+        <p>
+          &copy; Copyrights <strong>SGM</strong>Todos los derechos reservados.
+        </p>
+        <div class="credits">
+          Creado por: <a href="https://templatemag.com/">Baño Fabricio, Mendoza Bryan, Moreira Daniela, Valencia Jose</a>
+        </div>
+        <a href="inicio.aspx#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
+        </section>
+        <!------------------------------FIN----------------------->
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="lib/jquery.scrollTo.min.js"></script>
+    <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="lib/jquery.sparkline.js"></script>
+    <script src="lib/common-scripts.js"></script>
+    <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="lib/gritter-conf.js"></script>
+    <!-----------------script solo para esta pagina-------------->
+    <script src="lib/sparkline-chart.js"></script>
+    <script src="lib/zabuto_calendar.js"></script>
+    <!--MENSAJE DE INICIO-->
+      <script type="text/javascript">
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Bienvenido a SGM!',
+        // (string | mandatory) the text inside the notification
+        text: 'Revisa tus notificaciones.',
+        // (string | optional) the image to display on the left
+        image: 'img/usuario.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
+
+      return false;
+    });
+  </script>
+    <script type="application/javascript">
+        $(document).ready(function (){
+            $("#date-popover").popover({html: true,trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e){$(this).hide();});
+            $("#my-calendar").zabuto_calendar
+            ({
+                action: function (){return myDateFunction(this.id, false);},
+                action_nav: function() {return myNavFunction(this.id);},
+                ajax: {url: "show_data.php?action=1",modal: true},
+                legend:
+                    [{ type: "text", label: "Special event", badge: "00" },
+                    {type: "block",label: "Regular event",}]
+            });
+        });
+        function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    </script>
+    </form> 
+    </body>
+</html>
